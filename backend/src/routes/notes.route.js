@@ -1,5 +1,5 @@
 const express = require('express');
-const {createNotesControllers ,getAllNotesControllers,getSingleNoteControllers,updateSingleNoteControllers,deleteSingleNoteControllers} = require('../controllers/notes.Controller');
+const {createNotesControllers ,getAllNotesControllers,getSingleNoteControllers,updateSingleNoteControllers,deleteSingleNoteControllers,patchSingleNoteControllers} = require('../controllers/notes.Controller');
 const router = express.Router();
 
           //Create
@@ -12,5 +12,7 @@ router.get("/:id",getSingleNoteControllers)
 router.put("/:id",updateSingleNoteControllers)
           //delete
 router.delete("/:id",deleteSingleNoteControllers)
+          //patch
+router.patch("/:id",patchSingleNoteControllers)
 
 module.exports = router;

@@ -73,10 +73,27 @@ const deletedNotes =await notesModel.findByIdAndDelete(noteId);
         return res.status(400).send(error);
     }
 }
+
+const patchSingleNoteControllers =async (req,res)=>{
+    try{
+        
+let noteId =req.params.id;
+const singleUpdatedNotes =await notesModel.findByIdAndUpdate(noteId,req.body);
+        return res.status(200).json({
+            message:"Single Note updated successfully",
+            data:singleUpdatedNotes
+        });
+
+    }catch(error){
+        return res.status(400).send(error);
+    }
+}
+
 module.exports = {
     createNotesControllers,
     getAllNotesControllers,
     getSingleNoteControllers,
     updateSingleNoteControllers,
-    deleteSingleNoteControllers
+    deleteSingleNoteControllers,
+    patchSingleNoteControllers
 }
